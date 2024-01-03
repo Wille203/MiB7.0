@@ -47,6 +47,7 @@ public class AndraOmradesChef extends javax.swing.JFrame {
         ValjOmradeCBox = new javax.swing.JComboBox<>();
         jtxtAgentID = new javax.swing.JTextField();
         jbGodkanAndring = new javax.swing.JButton();
+        btnTillbaka3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +73,13 @@ public class AndraOmradesChef extends javax.swing.JFrame {
             }
         });
 
+        btnTillbaka3.setText("Tillbaka");
+        btnTillbaka3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbaka3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,13 +93,17 @@ public class AndraOmradesChef extends javax.swing.JFrame {
                     .addComponent(jlAndraOmradesChef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ValjOmradeCBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtxtAgentID))
-                .addContainerGap(256, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                .addComponent(btnTillbaka3)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jlAgentID)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlAgentID)
+                    .addComponent(btnTillbaka3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtxtAgentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -102,7 +114,7 @@ public class AndraOmradesChef extends javax.swing.JFrame {
                 .addComponent(jlAndraOmradesChef)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbGodkanAndring)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,6 +151,13 @@ public class AndraOmradesChef extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jbGodkanAndringActionPerformed
+
+    private void btnTillbaka3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbaka3ActionPerformed
+        // TODO add your handling code here:
+        EfterInloggAdmin nytt = new EfterInloggAdmin();
+        AndraOmradesChef.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnTillbaka3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,6 +196,8 @@ public class AndraOmradesChef extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ValjOmradeCBox;
+    private javax.swing.JButton btnTillbaka2;
+    private javax.swing.JButton btnTillbaka3;
     private javax.swing.JButton jbGodkanAndring;
     private javax.swing.JLabel jlAgentID;
     private javax.swing.JLabel jlAndraOmradesChef;

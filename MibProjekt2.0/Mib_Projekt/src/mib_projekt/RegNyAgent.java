@@ -58,6 +58,7 @@ public class RegNyAgent extends javax.swing.JFrame {
         txtEpost = new javax.swing.JTextField();
         txtLosenord = new javax.swing.JTextField();
         btnRegistera = new javax.swing.JButton();
+        btnTillbaka2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +80,13 @@ public class RegNyAgent extends javax.swing.JFrame {
         btnRegistera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisteraActionPerformed(evt);
+            }
+        });
+
+        btnTillbaka2.setText("Tillbaka");
+        btnTillbaka2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbaka2ActionPerformed(evt);
             }
         });
 
@@ -113,13 +121,20 @@ public class RegNyAgent extends javax.swing.JFrame {
                 .addContainerGap(85, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegistera, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnRegistera, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnTillbaka2)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addContainerGap()
+                .addComponent(btnTillbaka2)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNamn)
                     .addComponent(lbTelefon)
@@ -184,6 +199,13 @@ public class RegNyAgent extends javax.swing.JFrame {
              System.out.println("Internt felmeddelande" + ex.getMessage());
         }
     }//GEN-LAST:event_btnRegisteraActionPerformed
+
+    private void btnTillbaka2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbaka2ActionPerformed
+        // TODO add your handling code here:
+        EfterInloggAdmin nytt = new EfterInloggAdmin();
+        RegNyAgent.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnTillbaka2ActionPerformed
 
     private void fyllOmradeCBox() {
         try {
@@ -250,6 +272,7 @@ public class RegNyAgent extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistera;
+    private javax.swing.JButton btnTillbaka2;
     private javax.swing.JComboBox<String> cbtnAdmin;
     private javax.swing.JComboBox<String> cbtnOmrade;
     private javax.swing.JLabel jLabel4;

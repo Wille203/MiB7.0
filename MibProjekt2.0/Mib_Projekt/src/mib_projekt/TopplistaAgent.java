@@ -55,6 +55,12 @@ public class TopplistaAgent extends javax.swing.JFrame {
             }
         });
 
+        cbtnPlats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbtnPlatsActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,6 +126,10 @@ public class TopplistaAgent extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_btnListaActionPerformed
+
+    private void cbtnPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbtnPlatsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbtnPlatsActionPerformed
 
     /**
      * @param args the command line arguments

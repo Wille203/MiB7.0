@@ -15,8 +15,9 @@ import mib_projekt.BytaLosenord;
  * @author William
  */
 public class EfterInloggningAlien extends javax.swing.JFrame {
-    private String eposten;
     private InfDB idb;
+    private String eposten;
+    private static String epost;
     /**
      * Creates new form EfterInloggningAlien
      */
@@ -25,8 +26,10 @@ public class EfterInloggningAlien extends javax.swing.JFrame {
     }
     //Konstruktor för att få epost
     public EfterInloggningAlien(String eposten) {
-        this.eposten=eposten;
         initComponents();
+        this.eposten = eposten;
+        epost = eposten;
+        
         lbTest.setText("Välkommen " + eposten);
         try{
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
@@ -52,6 +55,7 @@ public class EfterInloggningAlien extends javax.swing.JFrame {
         jbLosenord = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jbOmradeschef = new javax.swing.JButton();
+        btnTillbaka2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +77,13 @@ public class EfterInloggningAlien extends javax.swing.JFrame {
             }
         });
 
+        btnTillbaka2.setText("Tillbaka");
+        btnTillbaka2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbaka2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,21 +91,24 @@ public class EfterInloggningAlien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbLosenord)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbTest, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jbOmradeschef)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbLosenord)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbTest, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTillbaka2)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +119,9 @@ public class EfterInloggningAlien extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lbTest, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnTillbaka2)
+                            .addComponent(lbTest, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -133,7 +149,7 @@ public class EfterInloggningAlien extends javax.swing.JFrame {
             System.out.println("Bra");
             String fraga = "SELECT Agent.Namn, Agent.Epost, Agent.Telefon "
                     + "FROM Alien, Plats, Omradeschef, Agent "
-                    + "WHERE Alien.Epost = '"+ eposten +"' AND Plats = Plats_ID "
+                    + "WHERE Alien.Epost = '"+ epost +"' AND Plats = Plats_ID "
                     + "AND Finns_I = Omradeschef.Omrade AND Omradeschef.Agent_ID = Agent.Agent_ID;";
             System.out.println("Bättre");
             HashMap<String,String> svaret = idb.fetchRow(fraga);
@@ -146,6 +162,13 @@ public class EfterInloggningAlien extends javax.swing.JFrame {
 
            }
     }//GEN-LAST:event_jbOmradeschefActionPerformed
+
+    private void btnTillbaka2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbaka2ActionPerformed
+        // TODO add your handling code here:
+        InLoggningAlien nytt = new InLoggningAlien();
+        EfterInloggningAlien.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnTillbaka2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,6 +208,7 @@ public class EfterInloggningAlien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTillbaka2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jbLosenord;

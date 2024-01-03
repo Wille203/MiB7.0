@@ -28,13 +28,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btSokKnapp" min="-2" pref="75" max="-2" attributes="0"/>
                   <Component id="CBomrade" min="-2" max="-2" attributes="0"/>
-                  <Component id="SökfunktionOmradesansvarigAgent" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="SökfunktionOmradesansvarigAgent" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="82" max="32767" attributes="0"/>
+                      <Component id="btnTillbaka2" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Component id="lbAgentNamn" alignment="0" max="32767" attributes="0"/>
                       <Component id="lbAnsvarigAgent" alignment="0" pref="120" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="160" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -42,7 +46,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="SökfunktionOmradesansvarigAgent" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="SökfunktionOmradesansvarigAgent" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTillbaka2" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="CBomrade" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -51,7 +58,7 @@
               <Component id="lbAnsvarigAgent" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="lbAgentNamn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="179" max="32767" attributes="0"/>
+              <EmptySpace pref="172" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,6 +94,14 @@
     <Component class="javax.swing.JLabel" name="lbAnsvarigAgent">
     </Component>
     <Component class="javax.swing.JLabel" name="lbAgentNamn">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTillbaka2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tillbaka"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbaka2ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

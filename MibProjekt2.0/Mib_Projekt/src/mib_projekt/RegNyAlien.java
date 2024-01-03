@@ -75,6 +75,7 @@ public class RegNyAlien extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtInfoRas = new javax.swing.JTextField();
         lbRasInfo = new javax.swing.JLabel();
+        btnTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +106,13 @@ public class RegNyAlien extends javax.swing.JFrame {
         jLabel1.setText("Ras:");
 
         lbRasInfo.setText("Antal armar:");
+
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,11 +150,17 @@ public class RegNyAlien extends javax.swing.JFrame {
                                 .addComponent(txtLosenord, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                                 .addComponent(lbLosenord, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTillbaka)
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
+                .addComponent(btnTillbaka)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -243,6 +257,14 @@ public class RegNyAlien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbtnRasActionPerformed
 
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        // TODO add your handling code here:
+        EfterInlogg nytt = new EfterInlogg();
+        RegNyAlien.this.setVisible(false);
+        nytt.setVisible(true);
+
+    }//GEN-LAST:event_btnTillbakaActionPerformed
+
     private void fyllPlatsCBox() {
         try {
             // SQL-fråga för att hämta Plats_ID och Benamning från plats-tabellen
@@ -308,6 +330,7 @@ public class RegNyAlien extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReg;
+    private javax.swing.JButton btnTillbaka;
     private javax.swing.JComboBox<String> cbtnPlats;
     private javax.swing.JComboBox<String> cbtnRas;
     private javax.swing.JLabel jLabel1;

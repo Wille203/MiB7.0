@@ -43,6 +43,7 @@ public class AndraKontorsChef extends javax.swing.JFrame {
         jlAndraKontorschef = new javax.swing.JLabel();
         jlSkrivIAgentID = new javax.swing.JLabel();
         jbBekraftaAndring = new javax.swing.JButton();
+        btnTillbaka3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +60,13 @@ public class AndraKontorsChef extends javax.swing.JFrame {
             }
         });
 
+        btnTillbaka3.setText("Tillbaka");
+        btnTillbaka3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbaka3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,17 +74,25 @@ public class AndraKontorsChef extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlAndraKontorschef)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlAndraKontorschef)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                        .addComponent(btnTillbaka3))
                     .addComponent(jtxtAgentID, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlSkrivIAgentID)
                     .addComponent(jbBekraftaAndring))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jlAndraKontorschef, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jlAndraKontorschef, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnTillbaka3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlSkrivIAgentID)
                 .addGap(18, 18, 18)
@@ -124,6 +140,13 @@ public class AndraKontorsChef extends javax.swing.JFrame {
             }
         } 
     }//GEN-LAST:event_jbBekraftaAndringActionPerformed
+
+    private void btnTillbaka3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbaka3ActionPerformed
+        // TODO add your handling code here:
+        EfterInloggAdmin nytt = new EfterInloggAdmin();
+        AndraKontorsChef.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnTillbaka3ActionPerformed
       
     
     public static void main(String args[]) {
@@ -159,6 +182,7 @@ public class AndraKontorsChef extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTillbaka3;
     private javax.swing.JButton jbBekraftaAndring;
     private javax.swing.JLabel jlAndraKontorschef;
     private javax.swing.JLabel jlSkrivIAgentID;

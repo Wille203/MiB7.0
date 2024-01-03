@@ -43,6 +43,7 @@ public class SokaFramOmradesChef extends javax.swing.JFrame {
         btSokKnapp = new javax.swing.JButton();
         lbAnsvarigAgent = new javax.swing.JLabel();
         lbAgentNamn = new javax.swing.JLabel();
+        btnTillbaka2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +58,13 @@ public class SokaFramOmradesChef extends javax.swing.JFrame {
             }
         });
 
+        btnTillbaka2.setText("Tillbaka");
+        btnTillbaka2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbaka2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,17 +74,22 @@ public class SokaFramOmradesChef extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btSokKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CBomrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SökfunktionOmradesansvarigAgent)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(SökfunktionOmradesansvarigAgent)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addComponent(btnTillbaka2))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(lbAgentNamn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbAnsvarigAgent, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(SökfunktionOmradesansvarigAgent)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SökfunktionOmradesansvarigAgent)
+                    .addComponent(btnTillbaka2))
                 .addGap(18, 18, 18)
                 .addComponent(CBomrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -85,7 +98,7 @@ public class SokaFramOmradesChef extends javax.swing.JFrame {
                 .addComponent(lbAnsvarigAgent)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbAgentNamn)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         pack();
@@ -106,6 +119,13 @@ public class SokaFramOmradesChef extends javax.swing.JFrame {
         System.out.println("Något blev inte som tänkt");
      }
     }//GEN-LAST:event_btSokKnappActionPerformed
+
+    private void btnTillbaka2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbaka2ActionPerformed
+        // TODO add your handling code here:
+        EfterInloggAdmin nytt = new EfterInloggAdmin();
+        SokaFramOmradesChef.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnTillbaka2ActionPerformed
 
     private String hamtaChefForOmrade(String omradeValt) throws InfException {
         String fraga = "SELECT agent.Namn FROM Omradeschef " +
@@ -154,6 +174,7 @@ public class SokaFramOmradesChef extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CBomrade;
     private javax.swing.JLabel SökfunktionOmradesansvarigAgent;
     private javax.swing.JButton btSokKnapp;
+    private javax.swing.JButton btnTillbaka2;
     private javax.swing.JLabel lbAgentNamn;
     private javax.swing.JLabel lbAnsvarigAgent;
     // End of variables declaration//GEN-END:variables

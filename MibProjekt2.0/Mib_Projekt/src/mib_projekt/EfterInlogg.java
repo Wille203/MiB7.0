@@ -20,7 +20,7 @@ public class EfterInlogg extends javax.swing.JFrame {
     private InfDB idb;
     private String epost;
     private String nuvarandeLosenord;
-
+    private static String epost1;
     /**
      * Skapar ett nytt EfterInlogg-fönster.
      */
@@ -40,10 +40,12 @@ public class EfterInlogg extends javax.swing.JFrame {
     }
 
 // Konstruktör för EfterInlogg med e-post
-    public EfterInlogg(String epost, String losenord) {
+    public EfterInlogg(String epost) {
         initComponents();
         this.epost = epost;
-        nuvarandeLosenord = losenord;
+        epost1 = epost;
+        
+        
 
         // Uppdatera välkomstmeddelandet med användarens e-post
         lbValkommen.setText("Välkommen, " + epost + "!");
@@ -78,6 +80,7 @@ public class EfterInlogg extends javax.swing.JFrame {
         btnRas = new javax.swing.JButton();
         btnDatum = new javax.swing.JButton();
         btnPlats = new javax.swing.JButton();
+        btnTillbaka2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +137,13 @@ public class EfterInlogg extends javax.swing.JFrame {
             }
         });
 
+        btnTillbaka2.setText("Tillbaka");
+        btnTillbaka2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbaka2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,8 +157,11 @@ public class EfterInlogg extends javax.swing.JFrame {
                                 .addComponent(btnAndraLosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtNyttLosenord)
                                 .addComponent(lbAndraLosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lbValkommen, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbValkommen, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnTillbaka2)))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -166,8 +179,13 @@ public class EfterInlogg extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lbValkommen)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(lbValkommen))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnTillbaka2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(lbAndraLosenord)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -223,7 +241,7 @@ public class EfterInlogg extends javax.swing.JFrame {
         int agentID = -1;
         try {
             // Skapa SQL-frågan för att hämta Agent_ID baserat på e-post och lösenord
-            String fraga = "SELECT Agent_ID FROM agent WHERE epost = '" + epost + "' AND losenord = '" + losenord + "'";
+            String fraga = "SELECT Agent_ID FROM agent WHERE epost = '" + epost + "'";
 
             // Utför frågan och hämta resultatet
             String svar = idb.fetchSingle(fraga);
@@ -262,7 +280,7 @@ public class EfterInlogg extends javax.swing.JFrame {
     private void btnListaUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaUtrustningActionPerformed
 
         try {
-            String agentIdQuery = "SELECT AGENT_ID FROM AGENT WHERE epost = '" + epost + "';";
+            String agentIdQuery = "SELECT AGENT_ID FROM AGENT WHERE epost = '" + epost1 + "';";
             String resultatAgentID = idb.fetchSingle(agentIdQuery);
             int agentID = Integer.parseInt(resultatAgentID);
 
@@ -283,7 +301,7 @@ public class EfterInlogg extends javax.swing.JFrame {
 
     private void btnRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRasActionPerformed
         //öppnar nytt fönster
-        AliensAvRas nytt = new AliensAvRas();
+        AliensAvRas nytt = new AliensAvRas(epost);
         EfterInlogg.this.setVisible(false);
         nytt.setVisible(true);
     }//GEN-LAST:event_btnRasActionPerformed
@@ -297,10 +315,17 @@ public class EfterInlogg extends javax.swing.JFrame {
 
     private void btnPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlatsActionPerformed
         // TODO add your handling code here:
-        AliensPaPlats nytt = new AliensPaPlats();
+        AliensPaPlats nytt = new AliensPaPlats(epost);
         EfterInlogg.this.setVisible(false);
         nytt.setVisible(true);
     }//GEN-LAST:event_btnPlatsActionPerformed
+
+    private void btnTillbaka2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbaka2ActionPerformed
+        // TODO add your handling code here:
+        InLoggningAgent nytt = new InLoggningAgent();
+        EfterInlogg.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnTillbaka2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,6 +370,9 @@ public class EfterInlogg extends javax.swing.JFrame {
     private javax.swing.JButton btnPlats;
     private javax.swing.JButton btnRas;
     private javax.swing.JButton btnRegAlien;
+    private javax.swing.JButton btnTillbaka;
+    private javax.swing.JButton btnTillbaka1;
+    private javax.swing.JButton btnTillbaka2;
     private javax.swing.JLabel lbAndraLosenord;
     private javax.swing.JLabel lbValkommen;
     private javax.swing.JTextField txtNyttLosenord;

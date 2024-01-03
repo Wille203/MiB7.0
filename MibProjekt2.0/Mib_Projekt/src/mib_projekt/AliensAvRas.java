@@ -15,6 +15,7 @@ import oru.inf.InfException;
  */
 public class AliensAvRas extends javax.swing.JFrame {
     private InfDB idb;
+    private String epost;
     /**
      * Creates new form AliensAvRas
      */
@@ -23,6 +24,18 @@ public class AliensAvRas extends javax.swing.JFrame {
         try {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             System.out.println("funka");
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Något gick fel!");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+        }
+    }
+    
+        public AliensAvRas(String epost) {
+        initComponents();
+        try {
+            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+            System.out.println("funka");
+            this.epost = epost;
         } catch (InfException ettUndantag) {
             JOptionPane.showMessageDialog(null, "Något gick fel!");
             System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
@@ -42,6 +55,7 @@ public class AliensAvRas extends javax.swing.JFrame {
         cbAliens = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +76,13 @@ public class AliensAvRas extends javax.swing.JFrame {
 
         jLabel2.setText("Namnen");
 
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,11 +99,17 @@ public class AliensAvRas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(72, 72, 72))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTillbaka)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
+                .addContainerGap()
+                .addComponent(btnTillbaka)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -140,6 +167,14 @@ public class AliensAvRas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbAliensActionPerformed
 
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        // TODO add your handling code here:
+        EfterInlogg nytt = new EfterInlogg(epost);
+        AliensAvRas.this.setVisible(false);
+        nytt.setVisible(true);
+        
+    }//GEN-LAST:event_btnTillbakaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -176,6 +211,7 @@ public class AliensAvRas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTillbaka;
     private javax.swing.JComboBox<String> cbAliens;
     private javax.swing.JComboBox<String> cbRas;
     private javax.swing.JLabel jLabel1;

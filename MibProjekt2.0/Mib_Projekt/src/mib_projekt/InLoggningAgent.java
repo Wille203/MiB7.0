@@ -45,6 +45,7 @@ public class InLoggningAgent extends javax.swing.JFrame {
         txtLosenord = new javax.swing.JTextField();
         btnLoggaIn = new javax.swing.JButton();
         lbValkommen = new javax.swing.JLabel();
+        btnTillbaka2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +57,13 @@ public class InLoggningAgent extends javax.swing.JFrame {
         btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoggaInActionPerformed(evt);
+            }
+        });
+
+        btnTillbaka2.setText("Tillbaka");
+        btnTillbaka2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbaka2ActionPerformed(evt);
             }
         });
 
@@ -73,13 +81,17 @@ public class InLoggningAgent extends javax.swing.JFrame {
                     .addComponent(lbLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLoggaIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbValkommen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addComponent(btnTillbaka2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lbEpost)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbEpost)
+                    .addComponent(btnTillbaka2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtEpost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -90,7 +102,7 @@ public class InLoggningAgent extends javax.swing.JFrame {
                 .addComponent(btnLoggaIn)
                 .addGap(18, 18, 18)
                 .addComponent(lbValkommen, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -116,7 +128,7 @@ public class InLoggningAgent extends javax.swing.JFrame {
                 // Kontrollera om resultatet är tomt eller null
                 if (svar != null && !svar.isEmpty()) {
                     // Uppdatera användargränssnittet eller gör något med resultatet
-                    EfterInlogg nytt = new EfterInlogg(txtEpost.getText(), txtLosenord.getText());
+                    EfterInlogg nytt = new EfterInlogg(txtEpost.getText());
                     InLoggningAgent.this.setVisible(false);
                     nytt.setVisible(true);
                 } else {
@@ -131,6 +143,13 @@ public class InLoggningAgent extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnLoggaInActionPerformed
+
+    private void btnTillbaka2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbaka2ActionPerformed
+        // TODO add your handling code here:
+        HuvudMeny nytt = new HuvudMeny();
+        InLoggningAgent.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnTillbaka2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,6 +187,7 @@ public class InLoggningAgent extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaIn;
+    private javax.swing.JButton btnTillbaka2;
     private javax.swing.JLabel lbEpost;
     private javax.swing.JLabel lbLosenord;
     private javax.swing.JLabel lbValkommen;

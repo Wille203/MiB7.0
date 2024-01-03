@@ -81,6 +81,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         cbtnRas = new javax.swing.JComboBox<>();
         lbRasInfo = new javax.swing.JLabel();
         txtRasInfo = new javax.swing.JTextField();
+        btnTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,6 +110,13 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         });
 
         lbRasInfo.setText("Antal Armar:");
+
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,13 +153,19 @@ public class AndraInfoAlien extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTillbaka)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addContainerGap()
+                        .addComponent(btnTillbaka)
+                        .addGap(5, 5, 5)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
@@ -358,6 +372,13 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbtnRasActionPerformed
 
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        // TODO add your handling code here:
+        NamnAllaAlien nytt = new NamnAllaAlien();
+        AndraInfoAlien.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnTillbakaActionPerformed
+
     private String hamtaNuvarandePlats() {
         try {
             String platsFraga = "SELECT Benamning FROM plats WHERE Plats_ID = (SELECT Plats FROM ALIEN WHERE ALIEN_ID = '" + AlienID + "')";
@@ -446,6 +467,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndraInfoAlien;
+    private javax.swing.JButton btnTillbaka;
     private javax.swing.JComboBox<String> cbtnPlats;
     private javax.swing.JComboBox<String> cbtnRas;
     private javax.swing.JLabel jLabel3;

@@ -16,6 +16,7 @@ import oru.inf.InfException;
  */
 public class AliensPaPlats extends javax.swing.JFrame {
     private InfDB idb;
+    private String epost;
     /**
      * Creates new form AliensPaPlats
      */
@@ -25,6 +26,19 @@ public class AliensPaPlats extends javax.swing.JFrame {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             System.out.println("funka");
             fyllcbplats();
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Något gick fel!");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+        }
+    }
+    
+        public AliensPaPlats(String epost) {
+        initComponents();
+        try {
+            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+            System.out.println("funka");
+            fyllcbplats();
+            this.epost = epost;
         } catch (InfException ettUndantag) {
             JOptionPane.showMessageDialog(null, "Något gick fel!");
             System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
@@ -46,6 +60,7 @@ public class AliensPaPlats extends javax.swing.JFrame {
         cbVisaNamn = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnTillbaka = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -72,6 +87,13 @@ public class AliensPaPlats extends javax.swing.JFrame {
 
         jLabel2.setText("Namnen");
 
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,11 +110,17 @@ public class AliensPaPlats extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(81, 81, 81))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTillbaka)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addContainerGap()
+                .addComponent(btnTillbaka)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -114,6 +142,14 @@ public class AliensPaPlats extends javax.swing.JFrame {
     private void cbVisaNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVisaNamnActionPerformed
     
     }//GEN-LAST:event_cbVisaNamnActionPerformed
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        // TODO add your handling code here:
+        EfterInlogg nytt = new EfterInlogg(epost);
+        AliensPaPlats.this.setVisible(false);
+        nytt.setVisible(true);
+
+    }//GEN-LAST:event_btnTillbakaActionPerformed
     
     private void fyllcbplats(){
         try {
@@ -205,6 +241,7 @@ public class AliensPaPlats extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTillbaka;
     private javax.swing.JComboBox<String> cbVisaNamn;
     private javax.swing.JComboBox<String> cbplats;
     private javax.swing.JLabel jLabel1;
