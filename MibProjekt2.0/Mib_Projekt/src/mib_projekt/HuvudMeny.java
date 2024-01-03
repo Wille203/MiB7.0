@@ -114,9 +114,9 @@ public class HuvudMeny extends javax.swing.JFrame {
 
     private void jbAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdminActionPerformed
         //Admin
-        //Inloggning_Admin nytt = new Inloggning_Admin();
-        //HuvudMeny.this.setVisible(false);
-        //nytt.setVisible(true);
+        InLoggningAdmin nytt = new InLoggningAdmin();
+        HuvudMeny.this.setVisible(false);
+        nytt.setVisible(true);
     }//GEN-LAST:event_jbAdminActionPerformed
 
     /**
