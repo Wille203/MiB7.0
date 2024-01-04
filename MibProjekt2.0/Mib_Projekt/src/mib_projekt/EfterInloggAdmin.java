@@ -5,8 +5,6 @@
 package mib_projekt;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -19,7 +17,7 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
 
     private InfDB idb;
     private String epost;
-    private String nuvarandeLosenord;
+    private static String epost1;
 
     /**
      * Skapar ett nytt EfterInlogg-fönster.
@@ -40,10 +38,11 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
     }
 
 // Konstruktör för EfterInlogg med e-post
-    public EfterInloggAdmin(String epost, String losenord) {
+    public EfterInloggAdmin(String epost) {
         initComponents();
         this.epost = epost;
-        nuvarandeLosenord = losenord;
+        epost1 = epost;
+        
 
         // Uppdatera välkomstmeddelandet med användarens e-post
         lbValkommen.setText("Välkommen, " + epost + "!");
@@ -334,7 +333,7 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
             // Kontrollera om det nya lösenordet är 6 tecken eller kortare
             if (nyttLosenord.length() <= 6) {
                 // Skapa SQL-frågan för att uppdatera lösenordet i databasen
-                String fraga = "UPDATE agent SET losenord ='" + nyttLosenord + "' WHERE epost = '" + epost + "'";
+                String fraga = "UPDATE agent SET losenord ='" + nyttLosenord + "' WHERE epost = '" + epost1 + "'";
 
                 // Utför uppdateringen i databasen
                 idb.update(fraga);
@@ -377,7 +376,7 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
     private void btnRegAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegAlienActionPerformed
 
         // Hämta agentID
-        int agentID = getAlienID(epost, nuvarandeLosenord);
+        int agentID = getAlienID(epost);
 
         // Skapa ett nytt objekt av RegNyAlien och skicka med agentID
         RegNyAlien nytt = new RegNyAlien(agentID);
@@ -395,7 +394,7 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
     private void btnListaUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaUtrustningActionPerformed
 
         try {
-            String agentIdQuery = "SELECT AGENT_ID FROM AGENT WHERE epost = '" + epost + "';";
+            String agentIdQuery = "SELECT AGENT_ID FROM AGENT WHERE epost = '" + epost1 + "';";
             String resultatAgentID = idb.fetchSingle(agentIdQuery);
             int agentID = Integer.parseInt(resultatAgentID);
 
@@ -479,29 +478,29 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
 
     private void btnAndraAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraAgentActionPerformed
         // TODO add your handling code here:
-        AndraInfoAgent nytt = new AndraInfoAgent();
-        EfterInloggAdmin.this.setVisible(false);
-        nytt.setVisible(true);
+        //AndraInfoAgent nytt = new AndraInfoAgent();
+        //EfterInloggAdmin.this.setVisible(false);
+        //nytt.setVisible(true);
     }//GEN-LAST:event_btnAndraAgentActionPerformed
 
     private void btnBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBortAgentActionPerformed
         // TODO add your handling code here:
-        DeleteAgent nytt = new DeleteAgent();
-        EfterInloggAdmin.this.setVisible(false);
-        nytt.setVisible(true);
+        //DeleteAgent nytt = new DeleteAgent();
+        //EfterInloggAdmin.this.setVisible(false);
+        //nytt.setVisible(true);
     }//GEN-LAST:event_btnBortAgentActionPerformed
 
     private void btnGeAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeAdminActionPerformed
-        GeAgentAdmin nytt = new GeAgentAdmin();
-        EfterInloggAdmin.this.setVisible(false);
-        nytt.setVisible(true);
+        //GeAgentAdmin nytt = new GeAgentAdmin();
+        //EfterInloggAdmin.this.setVisible(false);
+        //nytt.setVisible(true);
     }//GEN-LAST:event_btnGeAdminActionPerformed
 
     private void btnBortUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBortUtrustningActionPerformed
         // TODO add your handling code here:
-        TaBortUtrustning nytt = new TaBortUtrustning();
-        EfterInloggAdmin.this.setVisible(false);
-        nytt.setVisible(true);
+        //TaBortUtrustning nytt = new TaBortUtrustning();
+        //EfterInloggAdmin.this.setVisible(false);
+        //nytt.setVisible(true);
     }//GEN-LAST:event_btnBortUtrustningActionPerformed
 
     /**
