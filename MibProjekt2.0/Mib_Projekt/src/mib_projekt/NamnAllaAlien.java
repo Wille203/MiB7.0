@@ -18,6 +18,7 @@ public class NamnAllaAlien extends javax.swing.JFrame {
 
     private InfDB idb;
     private int valtAlienID;
+    private String Tidigare;
 
     /**
      * Creates new form NamnAllaAlien
@@ -28,6 +29,19 @@ public class NamnAllaAlien extends javax.swing.JFrame {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             System.out.println("Databasanslutning lyckades");
             fyllCbtnAlienNamn();
+        } catch (InfException ettUndantag) {
+            // Visa felmeddelande om det uppstår problem med databasanslutningen
+            JOptionPane.showMessageDialog(null, "Något gick fel vid anslutning till databasen!");
+            System.out.println("Internt felmeddelande: " + ettUndantag.getMessage());
+        }
+    }
+    public NamnAllaAlien(String Tidigare) {
+        initComponents();
+        try {
+            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+            System.out.println("Databasanslutning lyckades");
+            fyllCbtnAlienNamn();
+            this.Tidigare = Tidigare;
         } catch (InfException ettUndantag) {
             // Visa felmeddelande om det uppstår problem med databasanslutningen
             JOptionPane.showMessageDialog(null, "Något gick fel vid anslutning till databasen!");
@@ -166,16 +180,23 @@ public class NamnAllaAlien extends javax.swing.JFrame {
 
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         // TODO add your handling code here:
-        AndraInfoAlien nytt = new AndraInfoAlien(valtAlienID);
+        AndraInfoAlien nytt = new AndraInfoAlien(valtAlienID, Tidigare);
         NamnAllaAlien.this.setVisible(false);
         nytt.setVisible(true);
     }//GEN-LAST:event_btnAndraActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         // TODO add your handling code here:
-        EfterInlogg nytt = new EfterInlogg();
-        NamnAllaAlien.this.setVisible(false);
-        nytt.setVisible(true);
+        if(Tidigare.equals("ADMIN")){
+            EfterInloggAdmin nytt = new EfterInloggAdmin();
+            NamnAllaAlien.this.setVisible(false);
+            nytt.setVisible(true);
+        }
+        else{
+            EfterInlogg nytt = new EfterInlogg();
+            NamnAllaAlien.this.setVisible(false);
+            nytt.setVisible(true);
+        }
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**

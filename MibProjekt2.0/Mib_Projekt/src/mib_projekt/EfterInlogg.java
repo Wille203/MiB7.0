@@ -21,12 +21,14 @@ public class EfterInlogg extends javax.swing.JFrame {
     private String epost;
     private String nuvarandeLosenord;
     private static String epost1;
+    private String Tidigare;
     /**
      * Skapar ett nytt EfterInlogg-fönster.
      */
     // Konstruktör för EfterInlogg utan e-post
     public EfterInlogg() {
         initComponents();
+        Tidigare = "AGENT";
 
         // Försök att skapa en anslutning till databasen
         try {
@@ -44,7 +46,7 @@ public class EfterInlogg extends javax.swing.JFrame {
         initComponents();
         this.epost = epost;
         epost1 = epost;
-        
+        Tidigare = "AGENT";
         
 
         // Uppdatera välkomstmeddelandet med användarens e-post
@@ -265,14 +267,14 @@ public class EfterInlogg extends javax.swing.JFrame {
         int agentID = getAlienID(epost, nuvarandeLosenord);
 
         // Skapa ett nytt objekt av RegNyAlien och skicka med agentID
-        RegNyAlien nytt = new RegNyAlien(agentID);
+        RegNyAlien nytt = new RegNyAlien(agentID, Tidigare);
         EfterInlogg.this.setVisible(false);
         nytt.setVisible(true);;
     }//GEN-LAST:event_btnRegAlienActionPerformed
 
     private void btnAndraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraAlienActionPerformed
         // TODO add your handling code here:
-        NamnAllaAlien nytt = new NamnAllaAlien();
+        NamnAllaAlien nytt = new NamnAllaAlien(Tidigare);
         EfterInlogg.this.setVisible(false);
         nytt.setVisible(true);
     }//GEN-LAST:event_btnAndraAlienActionPerformed
@@ -301,21 +303,21 @@ public class EfterInlogg extends javax.swing.JFrame {
 
     private void btnRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRasActionPerformed
         //öppnar nytt fönster
-        AliensAvRas nytt = new AliensAvRas(epost);
+        AliensAvRas nytt = new AliensAvRas(epost,Tidigare);
         EfterInlogg.this.setVisible(false);
         nytt.setVisible(true);
     }//GEN-LAST:event_btnRasActionPerformed
 
     private void btnDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatumActionPerformed
         // TODO add your handling code here:
-        AliensMellanDatum nytt = new AliensMellanDatum();
+        AliensMellanDatum nytt = new AliensMellanDatum(Tidigare);
         EfterInlogg.this.setVisible(false);
         nytt.setVisible(true);
     }//GEN-LAST:event_btnDatumActionPerformed
 
     private void btnPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlatsActionPerformed
         // TODO add your handling code here:
-        AliensPaPlats nytt = new AliensPaPlats(epost);
+        AliensPaPlats nytt = new AliensPaPlats(epost,Tidigare);
         EfterInlogg.this.setVisible(false);
         nytt.setVisible(true);
     }//GEN-LAST:event_btnPlatsActionPerformed

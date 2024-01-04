@@ -16,6 +16,7 @@ import oru.inf.InfException;
 public class AliensAvRas extends javax.swing.JFrame {
     private InfDB idb;
     private String epost;
+    private String Tidigare;
     /**
      * Creates new form AliensAvRas
      */
@@ -30,12 +31,14 @@ public class AliensAvRas extends javax.swing.JFrame {
         }
     }
     
-        public AliensAvRas(String epost) {
+        public AliensAvRas(String epost,String Tidigare) {
         initComponents();
         try {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             System.out.println("funka");
             this.epost = epost;
+            this.Tidigare = Tidigare;
+            System.out.println(Tidigare);
         } catch (InfException ettUndantag) {
             JOptionPane.showMessageDialog(null, "Något gick fel!");
             System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
@@ -169,9 +172,16 @@ public class AliensAvRas extends javax.swing.JFrame {
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         // TODO add your handling code here:
-        EfterInlogg nytt = new EfterInlogg(epost);
-        AliensAvRas.this.setVisible(false);
-        nytt.setVisible(true);
+        if(Tidigare.equals("ADMIN")){
+            EfterInloggAdmin nytt = new EfterInloggAdmin(epost);
+            AliensAvRas.this.setVisible(false);
+            nytt.setVisible(true);
+        }
+        else{
+            EfterInlogg nytt = new EfterInlogg(epost);
+            AliensAvRas.this.setVisible(false);
+            nytt.setVisible(true);
+        }
         
     }//GEN-LAST:event_btnTillbakaActionPerformed
 

@@ -20,6 +20,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
     private String ursprungligRas;
     private String currentRas;
     private String columnName;
+    String Tidigare;
 
     /**
      * Creates new form AndraInfoAlien
@@ -41,9 +42,10 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         }
     }
 
-    public AndraInfoAlien(int AlienID) {
+    public AndraInfoAlien(int AlienID, String Tidigare) {
         initComponents();
         this.AlienID = AlienID;
+        this.Tidigare = Tidigare;
         try {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             System.out.println("Databasanslutning lyckades");
@@ -374,9 +376,16 @@ public class AndraInfoAlien extends javax.swing.JFrame {
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         // TODO add your handling code here:
-        NamnAllaAlien nytt = new NamnAllaAlien();
-        AndraInfoAlien.this.setVisible(false);
-        nytt.setVisible(true);
+        if(Tidigare.equals("ADMIN")){
+            NamnAllaAlien nytt = new NamnAllaAlien(Tidigare);
+            AndraInfoAlien.this.setVisible(false);
+            nytt.setVisible(true);
+        }
+        else{
+            EfterInlogg nytt = new EfterInlogg();
+            AndraInfoAlien.this.setVisible(false);
+            nytt.setVisible(true);
+        }
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     private String hamtaNuvarandePlats() {

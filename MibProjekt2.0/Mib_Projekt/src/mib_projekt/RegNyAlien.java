@@ -18,6 +18,7 @@ public class RegNyAlien extends javax.swing.JFrame {
     private InfDB idb;
     private int agentID;
     private String columnName;
+    private String Tidigare;
     /**
      * Creates new form RegNyAlien
      */
@@ -36,9 +37,10 @@ public class RegNyAlien extends javax.swing.JFrame {
         }
     }
 
-    public RegNyAlien(int agentID) {
+    public RegNyAlien(int agentID, String Tidigare) {
         initComponents();
         this.agentID = agentID;
+        this.Tidigare = Tidigare;
 
         try {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
@@ -259,9 +261,16 @@ public class RegNyAlien extends javax.swing.JFrame {
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         // TODO add your handling code here:
-        EfterInlogg nytt = new EfterInlogg();
-        RegNyAlien.this.setVisible(false);
-        nytt.setVisible(true);
+        if(Tidigare.equals("ADMIN")){
+            EfterInloggAdmin nytt = new EfterInloggAdmin();
+            RegNyAlien.this.setVisible(false);
+            nytt.setVisible(true);
+        }
+        else{
+            EfterInlogg nytt = new EfterInlogg();
+            RegNyAlien.this.setVisible(false);
+            nytt.setVisible(true);
+        }
 
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
