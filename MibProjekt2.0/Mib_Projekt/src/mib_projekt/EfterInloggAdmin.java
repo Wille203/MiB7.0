@@ -84,6 +84,11 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
         btnAndraKontors = new javax.swing.JButton();
         btnNyAgent = new javax.swing.JButton();
         btnTillbaka2 = new javax.swing.JButton();
+        btnInfoAgent = new javax.swing.JButton();
+        btnAndraAgent = new javax.swing.JButton();
+        btnBortAgent = new javax.swing.JButton();
+        btnGeAdmin = new javax.swing.JButton();
+        btnBortUtrustning = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,34 +182,88 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnInfoAgent.setText("Lista all info om agent");
+        btnInfoAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInfoAgentActionPerformed(evt);
+            }
+        });
+
+        btnAndraAgent.setText("Ändra info om agent");
+        btnAndraAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraAgentActionPerformed(evt);
+            }
+        });
+
+        btnBortAgent.setText("Ta bort agent");
+        btnBortAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBortAgentActionPerformed(evt);
+            }
+        });
+
+        btnGeAdmin.setText("Ge agent admin");
+        btnGeAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGeAdminActionPerformed(evt);
+            }
+        });
+
+        btnBortUtrustning.setText("Ta bort utrustning");
+        btnBortUtrustning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBortUtrustningActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbValkommen, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnRas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAndraAlien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
-                    .addComponent(btnDatum)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnAndraLosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtNyttLosenord)
-                        .addComponent(lbAndraLosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnRas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAndraAlien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+                            .addComponent(btnDatum)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnAndraLosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtNyttLosenord)
+                                .addComponent(lbAndraLosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbValkommen, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnBortAgent)
+                                    .addComponent(btnGeAdmin)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(285, 285, 285)
+                        .addComponent(btnBortUtrustning)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSokaOmrådes, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAndraOmrades, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAndraKontors, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnNyAgent)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnPlats, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRegAlien, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(btnListaUtrustning))
+                        .addGap(99, 99, 99))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnPlats, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRegAlien, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addComponent(btnListaUtrustning)))
-                .addGap(79, 79, 79)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(btnAndraAgent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnSokaOmrådes, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnAndraOmrades, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnAndraKontors, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnNyAgent, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnInfoAgent, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGap(26, 26, 26)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnTillbaka2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -216,13 +275,21 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAndraKontors)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAndraKontors)
+                            .addComponent(btnBortAgent))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAndraOmrades)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAndraOmrades)
+                            .addComponent(btnGeAdmin))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSokaOmrådes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnNyAgent)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnInfoAgent)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAndraAgent)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnPlats)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -230,12 +297,17 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnListaUtrustning))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbValkommen)
-                            .addComponent(btnTillbaka2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(3, 3, 3)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbValkommen)
+                                    .addComponent(btnTillbaka2)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(btnBortUtrustning)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addComponent(lbAndraLosenord)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtNyttLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -398,6 +470,40 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
         nytt.setVisible(true);
     }//GEN-LAST:event_btnTillbaka2ActionPerformed
 
+    private void btnInfoAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoAgentActionPerformed
+        // TODO add your handling code here:
+        /*All_Info_Agent nytt = new All_Info_Agent(idb);
+        EfterInloggAdmin.this.setVisible(false);
+        nytt.setVisible(true);*/
+    }//GEN-LAST:event_btnInfoAgentActionPerformed
+
+    private void btnAndraAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraAgentActionPerformed
+        // TODO add your handling code here:
+        AndraInfoAgent nytt = new AndraInfoAgent();
+        EfterInloggAdmin.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnAndraAgentActionPerformed
+
+    private void btnBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBortAgentActionPerformed
+        // TODO add your handling code here:
+        DeleteAgent nytt = new DeleteAgent();
+        EfterInloggAdmin.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnBortAgentActionPerformed
+
+    private void btnGeAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeAdminActionPerformed
+        GeAgentAdmin nytt = new GeAgentAdmin();
+        EfterInloggAdmin.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnGeAdminActionPerformed
+
+    private void btnBortUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBortUtrustningActionPerformed
+        // TODO add your handling code here:
+        TaBortUtrustning nytt = new TaBortUtrustning();
+        EfterInloggAdmin.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnBortUtrustningActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -434,11 +540,16 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAndraAgent;
     private javax.swing.JButton btnAndraAlien;
     private javax.swing.JButton btnAndraKontors;
     private javax.swing.JButton btnAndraLosenord;
     private javax.swing.JButton btnAndraOmrades;
+    private javax.swing.JButton btnBortAgent;
+    private javax.swing.JButton btnBortUtrustning;
     private javax.swing.JButton btnDatum;
+    private javax.swing.JButton btnGeAdmin;
+    private javax.swing.JButton btnInfoAgent;
     private javax.swing.JButton btnListaUtrustning;
     private javax.swing.JButton btnNyAgent;
     private javax.swing.JButton btnPlats;

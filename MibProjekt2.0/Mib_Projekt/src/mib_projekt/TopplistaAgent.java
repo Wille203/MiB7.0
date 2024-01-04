@@ -4,8 +4,14 @@
  */
 package mib_projekt;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import oru.inf.InfException;
 import oru.inf.InfDB;
 
@@ -16,16 +22,17 @@ import oru.inf.InfDB;
 public class TopplistaAgent extends javax.swing.JFrame {
 
     private InfDB idb;
+    private int omradeID;
 
     /**
-     * Creates new form TopplistaAgent
+     * Skapar en ny klass TopplistaAgent
      */
     public TopplistaAgent() {
         initComponents();
         try {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             System.out.println("Databasanslutning lyckades");
-            fyllPlatsCBox();
+            fyllOmradesCBox();
         } catch (InfException ettUndantag) {
             // Visa felmeddelande om det uppstår problem med databasanslutningen
             JOptionPane.showMessageDialog(null, "Något gick fel vid anslutning till databasen!");
@@ -45,6 +52,7 @@ public class TopplistaAgent extends javax.swing.JFrame {
         btnLista = new javax.swing.JButton();
         cbtnPlats = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        btnTillbaka2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,33 +63,41 @@ public class TopplistaAgent extends javax.swing.JFrame {
             }
         });
 
-        cbtnPlats.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setText("Område:");
+
+        btnTillbaka2.setText("Tillbaka");
+        btnTillbaka2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbtnPlatsActionPerformed(evt);
+                btnTillbaka2ActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLista, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
             .addGroup(layout.createSequentialGroup()
                 .addGap(150, 150, 150)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbtnPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbtnPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(157, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnLista, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnTillbaka2)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(btnTillbaka2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbtnPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -93,7 +109,7 @@ public class TopplistaAgent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fyllPlatsCBox() {
+    private void fyllOmradesCBox() {
         try {
             // SQL-fråga för att hämta Plats_ID och Benamning från plats-tabellen
             String fraga = "SELECT Omrades_ID, Benamning FROM omrade;";
@@ -103,15 +119,15 @@ public class TopplistaAgent extends javax.swing.JFrame {
             // Iterera över varje rad i resultatet
             for (HashMap<String, String> rad : resultat) {
                 // Hämta Plats_ID och Benamning från raden
-                String platsIdStr = rad.get("Omrades_ID");
-                String platsNamn = rad.get("Benamning");
+                String OmradesIdStr = rad.get("Omrades_ID");
+                String OmradesNamn = rad.get("Benamning");
 
                 // Kontrollera om Plats_ID är inte null
-                if (platsIdStr != null) {
+                if (OmradesIdStr != null) {
                     // Konvertera Plats_ID till integer
-                    int platsId = Integer.parseInt(platsIdStr);
+                    omradeID = Integer.parseInt(OmradesIdStr);
                     // Lägg till Benamning i dropdown-menyn
-                    cbtnPlats.addItem(platsNamn);
+                    cbtnPlats.addItem(OmradesNamn);
                 }
             }
         } catch (InfException ex) {
@@ -123,13 +139,74 @@ public class TopplistaAgent extends javax.swing.JFrame {
 
 
     private void btnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaActionPerformed
-        // TODO add your handling code here:
+        try {
+            // Hämta det valda området från comboboxen
+            String selectedOmrade = (String) cbtnPlats.getSelectedItem();
 
+            // Omvandla det valda området till omradesID
+            omradeID = getOmradeIDFromComboBox(selectedOmrade);
+
+            // SQL-fråga för att hämta topp 3 agenter baserat på det valda området
+            String fraga = "SELECT Agent.Namn, COUNT(*) FROM Agent "
+                    + "JOIN Alien ON Agent_ID = Ansvarig_Agent "
+                    + "JOIN Plats ON Alien.Plats = Plats_ID "
+                    + "WHERE Finns_I = " + omradeID + " "
+                    + "GROUP BY Agent.Namn "
+                    + "ORDER BY 2 DESC "
+                    + "LIMIT 3;";
+
+            // Utför SQL-frågan och få resultatet från databasen
+            ArrayList<HashMap<String, String>> resultat = idb.fetchRows(fraga);
+
+            // Skapa en modell för listan och fyll den med resultatet
+            DefaultListModel<String> listModel = new DefaultListModel<>();
+            for (HashMap<String, String> row : resultat) {
+                listModel.addElement("Agent: " + row.get("Namn") + ", Count: " + row.get("COUNT(*)"));
+            }
+
+            // Skapa en JList med modellen
+            JList<String> resultList = new JList<>(listModel);
+
+            // Skapa en JScrollPane för JList om det finns många rader
+            JScrollPane scrollPane = new JScrollPane(resultList);
+
+            // Visa ett popup-fönster med listan
+            JOptionPane.showMessageDialog(null, scrollPane, "Topplista Agent", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (InfException ex) {
+            // Hantera undantag om något går fel vid databasanropet
+            Logger.getLogger(TopplistaAgent.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnListaActionPerformed
 
-    private void cbtnPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbtnPlatsActionPerformed
+    private void btnTillbaka2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbaka2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbtnPlatsActionPerformed
+        EfterInlogg nytt = new EfterInlogg();
+        TopplistaAgent.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnTillbaka2ActionPerformed
+
+    private int getOmradeIDFromComboBox(String selectedOmrade) {
+        // Försök hämta Omrades_ID från databasen baserat på det valda området
+        try {
+            // SQL-fråga för att hämta Omrades_ID från omrade-tabellen
+            String fraga = "SELECT Omrades_ID FROM omrade WHERE Benamning = '" + selectedOmrade + "';";
+
+            // Utför SQL-frågan och få resultatet
+            var resultat = idb.fetchRows(fraga);
+
+            // Kontrollera om resultatet inte är tomt
+            if (!resultat.isEmpty()) {
+                // Returnera Omrades_ID som en integer
+                return Integer.parseInt(resultat.get(0).get("Omrades_ID"));
+            }
+        } catch (InfException ex) {
+            // Hantera undantag om något går fel vid databasanropet
+            JOptionPane.showMessageDialog(null, "Något gick fel vid hämtning av Omrades_ID!");
+            System.out.println("Internt felmeddelande" + ex.getMessage());
+        }
+        return -1; // Returnera ett ogiltigt värde om något går fel
+    }
 
     /**
      * @param args the command line arguments
@@ -168,6 +245,7 @@ public class TopplistaAgent extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLista;
+    private javax.swing.JButton btnTillbaka2;
     private javax.swing.JComboBox<String> cbtnPlats;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
