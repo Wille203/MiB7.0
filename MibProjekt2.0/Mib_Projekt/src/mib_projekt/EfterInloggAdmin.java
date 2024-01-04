@@ -5,8 +5,6 @@
 package mib_projekt;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -260,9 +258,7 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
                                             .addComponent(btnGeAdmin, javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(btnBortAgent, javax.swing.GroupLayout.Alignment.TRAILING))
                                         .addGap(39, 39, 39))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnBortUtrustning)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(btnBortUtrustning))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
@@ -471,9 +467,9 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
 
     private void btnAndraAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraAgentActionPerformed
         // TODO add your handling code here:
-        //AndraInfoAgent nytt = new AndraInfoAgent();
-        //EfterInloggAdmin.this.setVisible(false);
-        //nytt.setVisible(true);
+        NamnAllaAgenter nytt = new NamnAllaAgenter();
+        EfterInloggAdmin.this.setVisible(false);
+        nytt.setVisible(true);
     }//GEN-LAST:event_btnAndraAgentActionPerformed
 
     private void btnBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBortAgentActionPerformed
