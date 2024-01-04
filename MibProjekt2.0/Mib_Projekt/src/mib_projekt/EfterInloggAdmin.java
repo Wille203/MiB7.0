@@ -521,9 +521,9 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
 
     private void btnRegNyUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegNyUtrustningActionPerformed
         // TODO add your handling code here:
-        //RegNyUtrustning nytt = new RegNyUtrustning();
-        //EfterInloggAdmin.this.setVisible(false);
-        //nytt.setVisible(true);
+        RegNyUtrustning nytt = new RegNyUtrustning();
+        EfterInloggAdmin.this.setVisible(false);
+        nytt.setVisible(true);
     }//GEN-LAST:event_btnRegNyUtrustningActionPerformed
 
     /**
