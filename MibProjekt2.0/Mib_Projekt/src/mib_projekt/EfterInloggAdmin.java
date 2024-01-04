@@ -92,6 +92,7 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
         btnSokaOmrådes = new javax.swing.JButton();
         btnAndraOmrades = new javax.swing.JButton();
         btnRegNyUtrustning = new javax.swing.JButton();
+        btnTaBortAlien = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -227,6 +228,13 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnTaBortAlien.setText("Ta bort alien");
+        btnTaBortAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortAlienActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -267,7 +275,10 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(btnGeAdmin, javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(btnBortAgent, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(btnRegNyUtrustning, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                            .addComponent(btnRegNyUtrustning, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnTaBortAlien)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -295,6 +306,8 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnTaBortAlien)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnPlats)
@@ -487,9 +500,9 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
 
     private void btnBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBortAgentActionPerformed
         // TODO add your handling code here:
-        //DeleteAgent nytt = new DeleteAgent();
-        //EfterInloggAdmin.this.setVisible(false);
-        //nytt.setVisible(true);
+        TaBortAgent nytt = new TaBortAgent(idb);
+        EfterInloggAdmin.this.setVisible(false);
+        nytt.setVisible(true);
     }//GEN-LAST:event_btnBortAgentActionPerformed
 
     private void btnGeAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeAdminActionPerformed
@@ -500,9 +513,9 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
 
     private void btnBortUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBortUtrustningActionPerformed
         // TODO add your handling code here:
-        //TaBortUtrustning nytt = new TaBortUtrustning();
-        //EfterInloggAdmin.this.setVisible(false);
-        //nytt.setVisible(true);
+        NamnAllUtrustning nytt = new NamnAllUtrustning();
+        EfterInloggAdmin.this.setVisible(false);
+        nytt.setVisible(true);
     }//GEN-LAST:event_btnBortUtrustningActionPerformed
 
     private void btnSokaOmrådesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokaOmrådesActionPerformed
@@ -525,6 +538,13 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
         EfterInloggAdmin.this.setVisible(false);
         nytt.setVisible(true);
     }//GEN-LAST:event_btnRegNyUtrustningActionPerformed
+
+    private void btnTaBortAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAlienActionPerformed
+        // TODO add your handling code here:
+        TaBortAlien nytt = new TaBortAlien(idb);
+        EfterInloggAdmin.this.setVisible(false);
+        nytt.setVisible(true);
+    }//GEN-LAST:event_btnTaBortAlienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -579,6 +599,7 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnRegAlien;
     private javax.swing.JButton btnRegNyUtrustning;
     private javax.swing.JButton btnSokaOmrådes;
+    private javax.swing.JButton btnTaBortAlien;
     private javax.swing.JButton btnTillbaka2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbAndraLosenord;
