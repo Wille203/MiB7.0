@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
+
 /**
  *
  * @author hillv
@@ -110,12 +111,7 @@ public class InLoggningAdmin extends javax.swing.JFrame {
 
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
 
-        if (txtEpost.getText().isEmpty() || txtLosenord.getText().isEmpty()) {
-            // Om någon av textrutorna är tom, visa felmeddelande
-            JOptionPane.showMessageDialog(null, "Fyll i båda fälten!");
-            txtEpost.requestFocus();
-            txtLosenord.requestFocus();
-        } else {
+        
             try {
                 String epost = txtEpost.getText();
                 String losenord = txtLosenord.getText();
@@ -126,7 +122,7 @@ public class InLoggningAdmin extends javax.swing.JFrame {
                 // Utför frågan och hämta resultatet
                 String svar = idb.fetchSingle(fraga);
                 // Kontrollera om resultatet är tomt eller null
-                if (svar != null && Inmatningsvalidering.vardeInmatat(txtEpost) && Inmatningsvalidering.vardeInmatat(txtLosenord)) {
+                if (Inmatningsvalidering.vardeInmatat(txtEpost) && Inmatningsvalidering.vardeInmatat(txtLosenord)) {
                     // Uppdatera användargränssnittet eller gör något med resultatet
                     EfterInloggAdmin nytt = new EfterInloggAdmin(txtEpost.getText());
                     InLoggningAdmin.this.setVisible(false);
@@ -140,7 +136,7 @@ public class InLoggningAdmin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Något gick fel!");
                 System.out.println("Internt felmeddelande" + e.getMessage());
             }
-        }
+        
 
     }//GEN-LAST:event_btnLoggaInActionPerformed
 

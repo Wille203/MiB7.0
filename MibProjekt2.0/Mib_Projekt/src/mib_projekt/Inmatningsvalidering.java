@@ -25,11 +25,10 @@ public class Inmatningsvalidering {
         //Om sann forsätter metoden
         boolean inmatat = true;
         if(Varde.getText().isEmpty()){
-            
+            System.out.println("funkar hit");
             //Om varde inte lagts in visas detta och metoden forsätter inte:
             JOptionPane.showMessageDialog(null, "Någon/några ifyllnings rutor saknar värden");
             inmatat  = false;
-            System.out.println(Varde.getText());
             
         }
         // Returnerar det inmatade värdet.

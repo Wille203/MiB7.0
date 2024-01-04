@@ -91,6 +91,7 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
         btnBortUtrustning = new javax.swing.JButton();
         btnSokaOmrådes = new javax.swing.JButton();
         btnAndraOmrades = new javax.swing.JButton();
+        btnRegNyUtrustning = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -219,6 +220,13 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnRegNyUtrustning.setText("Registrera ny utrustning");
+        btnRegNyUtrustning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegNyUtrustningActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -250,15 +258,17 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(btnPlats, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(btnRegAlien, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                                .addGap(46, 46, 46)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 11, Short.MAX_VALUE)
+                                        .addGap(46, 46, 46)
+                                        .addComponent(btnBortUtrustning))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(btnGeAdmin, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(btnBortAgent, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addGap(39, 39, 39))
-                                    .addComponent(btnBortUtrustning))
+                                            .addComponent(btnBortAgent, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btnRegNyUtrustning, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
@@ -285,26 +295,29 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnPlats)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRegAlien)
-                            .addComponent(btnGeAdmin))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnPlats)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnRegAlien))
+                            .addComponent(btnGeAdmin)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnRegNyUtrustning)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBortAgent)
+                                .addGap(29, 29, 29)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnListaUtrustning)
                             .addComponent(btnBortUtrustning)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnBortAgent)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbAndraLosenord)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNyttLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAndraLosenord)
-                                .addGap(68, 68, 68)
-                                .addComponent(btnRas)))
+                        .addComponent(lbAndraLosenord)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNyttLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAndraLosenord)
+                        .addGap(68, 68, 68)
+                        .addComponent(btnRas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAndraAlien)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -460,9 +473,9 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
 
     private void btnInfoAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoAgentActionPerformed
         // TODO add your handling code here:
-        /*All_Info_Agent nytt = new All_Info_Agent(idb);
+        InfoAllAgent nytt = new InfoAllAgent(idb);
         EfterInloggAdmin.this.setVisible(false);
-        nytt.setVisible(true);*/
+        nytt.setVisible(true);
     }//GEN-LAST:event_btnInfoAgentActionPerformed
 
     private void btnAndraAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraAgentActionPerformed
@@ -480,9 +493,9 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBortAgentActionPerformed
 
     private void btnGeAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeAdminActionPerformed
-        //GeAgentAdmin nytt = new GeAgentAdmin();
-        //EfterInloggAdmin.this.setVisible(false);
-        //nytt.setVisible(true);
+        GeAgentAdminstatus nytt = new GeAgentAdminstatus(idb);
+        EfterInloggAdmin.this.setVisible(false);
+        nytt.setVisible(true);
     }//GEN-LAST:event_btnGeAdminActionPerformed
 
     private void btnBortUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBortUtrustningActionPerformed
@@ -505,6 +518,13 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
         EfterInloggAdmin.this.setVisible(false);
         nytt.setVisible(true);
     }//GEN-LAST:event_btnAndraOmradesActionPerformed
+
+    private void btnRegNyUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegNyUtrustningActionPerformed
+        // TODO add your handling code here:
+        //RegNyUtrustning nytt = new RegNyUtrustning();
+        //EfterInloggAdmin.this.setVisible(false);
+        //nytt.setVisible(true);
+    }//GEN-LAST:event_btnRegNyUtrustningActionPerformed
 
     /**
      * @param args the command line arguments
@@ -557,6 +577,7 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnPlats;
     private javax.swing.JButton btnRas;
     private javax.swing.JButton btnRegAlien;
+    private javax.swing.JButton btnRegNyUtrustning;
     private javax.swing.JButton btnSokaOmrådes;
     private javax.swing.JButton btnTillbaka2;
     private javax.swing.JLabel jLabel1;
