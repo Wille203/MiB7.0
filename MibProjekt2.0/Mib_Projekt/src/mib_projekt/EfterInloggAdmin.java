@@ -105,6 +105,12 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
             }
         });
 
+        txtNyttLosenord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNyttLosenordActionPerformed(evt);
+            }
+        });
+
         lbAndraLosenord.setText("Om du vill ändra lösenord:");
 
         btnRegAlien.setText("Registera Alien");
@@ -545,6 +551,10 @@ public class EfterInloggAdmin extends javax.swing.JFrame {
         EfterInloggAdmin.this.setVisible(false);
         nytt.setVisible(true);
     }//GEN-LAST:event_btnTaBortAlienActionPerformed
+
+    private void txtNyttLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNyttLosenordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNyttLosenordActionPerformed
 
     /**
      * @param args the command line arguments

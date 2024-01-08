@@ -110,11 +110,7 @@ public class InLoggningAgent extends javax.swing.JFrame {
 
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
 
-        if (txtEpost.getText().isEmpty() || txtLosenord.getText().isEmpty()) {
-            // Om någon av textrutorna är tom, visa felmeddelande
-            JOptionPane.showMessageDialog(null, "Fyll i båda fälten!");
-            txtEpost.requestFocus();
-            txtLosenord.requestFocus();
+        if ((Inmatningsvalidering.emailValidering(txtEpost) && Inmatningsvalidering.vardeInmatat(txtLosenord))!=true) {
         } else {
             try {
                 String epost = txtEpost.getText();
